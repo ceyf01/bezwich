@@ -7,10 +7,10 @@ export const generateTokenAndSetCookie=(id,res)=>{
         httpOnly:true,
         maxAge:15*24*60*60*1000,
         sameSite:"strict",
-        secure:process.env.NODEENV==="production" 
+        secure:process.env.NODEENV==="production" ,
+        path: '/'
 
 
 
     })
-    console.log("Generated Token:", token);  // Log token to check its value
 }

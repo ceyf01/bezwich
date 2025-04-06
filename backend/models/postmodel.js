@@ -21,13 +21,14 @@ const postSchema=new mongoose.Schema({
     comments:[
         {
             text:{
-            type:String,
+                type:String,
+            },
             user:{
                 type:mongoose.Schema.Types.ObjectId,
                 ref:"User"
-            }}
+            }
         }
-    ],
+        ],
 
 
 },{timestamps:true})

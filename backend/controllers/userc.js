@@ -1,5 +1,6 @@
 import User from "../models/usermodel.js"
 import bcrypt from "bcryptjs"
+import cloudinary from "../utils/cloudinary.js"
 import Notification from "../models/notifmodel.js"
 export const getUserProfile=async(req,res)=>{
     const {username}=req.params
@@ -139,3 +140,6 @@ catch (error) {
     
 }
 }
+
+
+

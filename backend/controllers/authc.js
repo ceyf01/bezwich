@@ -94,22 +94,23 @@ try {
 }    
 
 }
-export const logout=async (req,res) => {
+export const logout = async (req, res) => {
     try {
-        res.cookie("jwt",{maxAge:0})
-        res.status(200).json({message:"Logged out"})
-        
+        res.cookie("token", "", {
+            maxAge: 0,
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        });
+        res.status(200).json({ message: "Logged out successfully" });
     } catch (error) {
-        console.error(error.message)
-        res.status(500).json({error:"Server error"})   
-
-        
-        
+        console.error("Logout error:", error.message);
+        res.status(500).json({ error: "Server error during logout" });
     }
-    
-}
+};
 export const getMe=async (req,res) => {
     try {
+
         const user=await User.findById(req.user.id).select("-password")
         if(user){
             res.status(200).json(user)
